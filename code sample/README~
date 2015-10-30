@@ -1,0 +1,46 @@
+Student: Ioneanu Andrei
+Grupa: 314 CA
+Materie: Structuri de Date
+Tema: Codificare Huffman/ Tema 4
+
+Tema urmareste implementarea unui algoritm de comprimare si decomprimare
+pentru fisiere text sau binar, folosindu-se de algoritmul de codificare
+Huffman.
+
+In implementarea acestui algoritm, am utilizat structurile de date:
+- 	Element (Element.h), care retine un caracter, numarul de aparitii
+	ale acestuia si proprietatea de a fi sau nu frunza.
+-	BinaryTreeNode (BinaryTreeNode.h), ce retine nodurile unui arbore
+	binar, folosind ca date Elemente, precum si pointeri catre copii
+	(stand si drept)
+-	HuffmanSerializedNode (HuffmanNode.h)
+-	heap (heap.h), care implementeaza un heap ce urmeaza sa fie folosit 
+	ca o coada de prioritati, cu functia de comparare intre elemente
+	mentionata in enunt;
+	Heapul are ca metode principale:
+		- extractMin, care returneaza elementul minim din Heap (primul)
+		  si il sterge 
+		- getDim, care ofera dimensiunea curenta a heapului
+		- insert, care primeste ca parametru nodul ce urmeaza sa fie
+		  inserat in heap
+		- peek, care returneaza elementul minim (primul)
+		- pushUp si pushDown, folosite pentru a mentine ordinea in heap
+
+Fisierul main.cpp realizeaza compresia si decompresia, folosind structurile
+de date mentionate anterior. 
+In fisier sunt preluate optiunile (-c sau -d), pentru compresie si decompresie
+si numele fisierului de intrare, al carui nume este modificat pentru a 
+genera fisierul de iesire.
+Pentru compresie, sunt citire caracterele, pentru care se calculeaza numarul
+de aparitii, ce urmeaza sa fie salvat in Elemente. Se adauga nodurile in 
+heap conform algoritmului de codificare Huffman. 
+Heapul va avea pe primul element un arbore care, printr-o parcurgere
+in preordine, este transformat in vectorul de HuffmanSerializedNodes.
+Printr-o parcurgere DFS, se salveaza sirul de caractere prin care 
+este codificat fiecare caracter. 
+Ulterior, se reparcurge fisierul, inlocuindu-se caracterele cu 
+sirul de biti cu care este codificat.
+
+Pentru decompresie, se citesc informatiile necesare si se formeaza
+arborele Huffman. Se citesc apoi toate caracterele si se parcurge
+arborele pentru decodificare.
